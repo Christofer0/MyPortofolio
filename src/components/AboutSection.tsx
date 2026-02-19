@@ -352,35 +352,41 @@ const AboutSection = () => {
             {/* ── RIGHT: photo + stats ── */}
             <ScrollReveal className="md:col-span-2" delay={0.2}>
               <div className="flex flex-col items-center gap-6">
-                {/* Photo with animated border */}
-                <div className="relative group w-64 h-64">
-                  {/* spinning ring */}
-                  <motion.div
-                    className="absolute -inset-1 rounded-xl opacity-40 group-hover:opacity-70 transition-opacity"
-                    style={{
-                      background:
-                        "conic-gradient(from 0deg, hsl(var(--primary)), transparent, hsl(var(--primary)/0.4), transparent, hsl(var(--primary)))",
-                      borderRadius: "14px",
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                  {/* photo */}
-                  <div className="relative w-full h-full rounded-xl bg-secondary overflow-hidden border border-primary/20 z-10">
-                    <img
-                      src="/foto.jpg"
-                      alt="Christofer"
-                      className="w-full h-full object-cover"
+                {/* Photo with animated border — fully responsive */}
+                <div className="relative group w-full max-w-[260px] mx-auto">
+                  {/* paddingBottom trick: makes height = width on any screen size */}
+                  <div
+                    className="relative w-full"
+                    style={{ paddingBottom: "100%" }}
+                  >
+                    {/* spinning conic ring */}
+                    <motion.div
+                      className="absolute opacity-40 group-hover:opacity-70 transition-opacity"
+                      style={{
+                        inset: "-4px",
+                        borderRadius: "16px",
+                        background:
+                          "conic-gradient(from 0deg, hsl(var(--primary)), transparent, hsl(var(--primary)/0.4), transparent, hsl(var(--primary)))",
+                      }}
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
                     />
-                    {/* subtle overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+                    {/* photo — fills the padded box absolutely */}
+                    <div className="absolute inset-0 rounded-xl bg-secondary overflow-hidden border border-primary/20 z-10">
+                      <img
+                        src="/foto.jpg"
+                        alt="Christofer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+                    </div>
+                    {/* offset shadow box */}
+                    <div className="absolute -bottom-3 -right-3 w-full h-full rounded-xl border-2 border-primary/20 -z-10 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
                   </div>
-                  {/* offset shadow box */}
-                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-xl border-2 border-primary/20 -z-10 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
                 </div>
 
                 {/* Stats row */}
