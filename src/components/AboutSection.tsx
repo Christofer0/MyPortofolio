@@ -240,7 +240,7 @@ const AboutSection = () => {
           {/* ── Main grid ── */}
           <div className="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
             {/* ── LEFT: text + terminal + ticker ── */}
-            <div className="md:col-span-3 space-y-6">
+            <div className="md:col-span-3 space-y-6 order-2 md:order-1">
               <ScrollReveal delay={0.1}>
                 <p className="body-lg text-muted-foreground">
                   Hi! I'm{" "}
@@ -350,87 +350,94 @@ const AboutSection = () => {
             </div>
 
             {/* ── RIGHT: photo + stats ── */}
-            <ScrollReveal className="md:col-span-2" delay={0.2}>
-              <div className="flex flex-col items-center gap-6">
-                {/* Photo with animated border — fully responsive */}
-                <div className="relative group w-full max-w-[260px] mx-auto">
-                  {/* paddingBottom trick: makes height = width on any screen size */}
-                  <div
-                    className="relative w-full"
-                    style={{ paddingBottom: "100%" }}
-                  >
-                    {/* spinning conic ring */}
-                    <motion.div
-                      className="absolute opacity-40 group-hover:opacity-70 transition-opacity"
-                      style={{
-                        inset: "-4px",
-                        borderRadius: "16px",
-                        background:
-                          "conic-gradient(from 0deg, hsl(var(--primary)), transparent, hsl(var(--primary)/0.4), transparent, hsl(var(--primary)))",
-                      }}
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    />
-                    {/* photo — fills the padded box absolutely */}
-                    <div className="absolute inset-0 rounded-xl bg-secondary overflow-hidden border border-primary/20 z-10">
-                      <img
-                        src="/foto.jpg"
-                        alt="Christofer"
-                        className="w-full h-full object-cover object-top"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
-                    </div>
-                    {/* offset shadow box */}
-                    <div className="absolute -bottom-3 -right-3 w-full h-full rounded-xl border-2 border-primary/20 -z-10 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
-                  </div>
-                </div>
-
-                {/* Stats row */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                  className="w-full grid grid-cols-3 gap-2"
-                >
-                  {[
-                    { value: 5, suffix: "+", label: "Years exp" },
-                    { value: 30, suffix: "+", label: "Projects" },
-                    { value: 12, suffix: "", label: "Tech stack" },
-                  ].map((s) => (
+            <div className="md:col-span-2 flex justify-center order-1 md:order-2">
+              <ScrollReveal
+                delay={0.2}
+                className="w-full flex flex-col items-center gap-6"
+              >
+                <div className="flex flex-col items-center gap-6 w-full">
+                  {/* Photo with animated border — fully responsive */}
+                  <div className="relative group w-full max-w-[280px] sm:max-w-[300px] mx-auto">
+                    {/* paddingBottom trick: makes height = width on any screen size */}
                     <div
-                      key={s.label}
-                      className="py-3 px-2 rounded-xl border border-border/50 bg-background/50 hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200"
+                      className="relative w-full"
+                      style={{ paddingBottom: "100%" }}
                     >
-                      <StatCounter
-                        value={s.value}
-                        label={s.label}
-                        suffix={s.suffix}
+                      {/* spinning conic ring */}
+                      <motion.div
+                        className="absolute opacity-40 group-hover:opacity-70 transition-opacity"
+                        style={{
+                          inset: "-4px",
+                          borderRadius: "16px",
+                          background:
+                            "conic-gradient(from 0deg, hsl(var(--primary)), transparent, hsl(var(--primary)/0.4), transparent, hsl(var(--primary)))",
+                        }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 8,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
                       />
+                      {/* photo — fills the padded box absolutely */}
+                      <div className="absolute inset-0 rounded-xl bg-secondary overflow-hidden border border-primary/20 z-10">
+                        <img
+                          src="/fotoDelBg.png"
+                          alt="Christofer"
+                          className="w-full h-full object-cover object-[center_55%]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+                      </div>
+                      {/* offset shadow box */}
+                      <div className="absolute -bottom-3 -right-3 w-full h-full rounded-xl border-2 border-primary/20 -z-10 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300" />
                     </div>
-                  ))}
-                </motion.div>
+                  </div>
 
-                {/* Available badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.55, type: "spring", stiffness: 200 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/25 bg-emerald-500/5 text-emerald-400"
-                >
-                  <span className="relative flex w-2 h-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
-                    <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400" />
-                  </span>
-                  <span className="text-xs font-mono">Available for work</span>
-                </motion.div>
-              </div>
-            </ScrollReveal>
+                  {/* Stats row */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="w-full grid grid-cols-1 gap-2"
+                  >
+                    {[
+                      { value: 5, suffix: "+", label: "Years exp" },
+                      { value: 30, suffix: "+", label: "Projects" },
+                      { value: 12, suffix: "", label: "Tech stack" },
+                    ].map((s) => (
+                      <div
+                        key={s.label}
+                        className="py-3 px-2 rounded-xl border border-border/50 bg-background/50 hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200"
+                      >
+                        <StatCounter
+                          value={s.value}
+                          label={s.label}
+                          suffix={s.suffix}
+                        />
+                      </div>
+                    ))}
+                  </motion.div>
+
+                  {/* Available badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.55, type: "spring", stiffness: 200 }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/25 bg-emerald-500/5 text-emerald-400"
+                  >
+                    <span className="relative flex w-2 h-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                      <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400" />
+                    </span>
+                    <span className="text-xs font-mono">
+                      Available for work
+                    </span>
+                  </motion.div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
