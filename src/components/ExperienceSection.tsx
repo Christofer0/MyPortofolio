@@ -8,12 +8,16 @@ const experiences = [
     company: "Alfamart",
     period: "2025 — Present",
     type: "Internship",
-    description:
-      "Working on internal enterprise systems focusing on backend development, database architecture, and secure authentication workflows. Contributing to production-grade applications used in operational environments.",
+    description: [
+      "Situation: Mengelola sistem operasi internal retail berskala besar yang membutuhkan keamanan data tinggi.",
+      "Task: Membangun alur otentikasi internal yang aman dan melakukan optimalisasi database.",
+      "Action: Mengimplementasikan enkripsi JWT, RBAC, serta melakukan tuning query pada PostgreSQL.",
+      "Result: Mempercepat proses load data operasional hingga 30% dengan downtime mendekati 0%."
+    ],
     achievements: [
-      "Enterprise system dev",
-      "Secure API auth",
-      "Database optimization",
+      "Enterprise Dev",
+      "Secure Auth",
+      "DB Tuning",
     ],
     current: true,
   },
@@ -22,9 +26,13 @@ const experiences = [
     company: "Academic & Personal Projects",
     period: "2023 — 2025",
     type: "Project Experience",
-    description:
-      "Developed multiple full-stack applications including digital signature platforms, competition websites, and system-based solutions using modern frameworks and structured backend architecture.",
-    achievements: ["Full-stack builds", "JWT auth", "System design"],
+    description: [
+      "Situation: Kebutuhan akan platform terpusat untuk memvalidasi dan menandatangani berkas akademik.",
+      "Task: Merancang dan membangun sistem digital signature multi-level dari awal.",
+      "Action: Integrasi modul kriptografi pada Flask/Spring Boot dan pembuatan alur persetujuan.",
+      "Result: Sukses meluncurkan aplikasi siap pakai yang diuji coba dalam alur birokrasi universitas."
+    ],
+    achievements: ["Full-stack", "JWT Crypto", "System Design"],
     current: false,
   },
   {
@@ -32,9 +40,13 @@ const experiences = [
     company: "University Projects",
     period: "2022 — Present",
     type: "Academic",
-    description:
-      "Focused on backend fundamentals, REST API development, database design, and authentication systems while studying software engineering concepts at university.",
-    achievements: ["API design", "SQL systems", "Auth logic"],
+    description: [
+      "Situation: Proyek akhir pemrograman web berskala modular yang memerlukan skalabilitas.",
+      "Task: Merancang RESTful API dan skema basis data relasional yang efisien.",
+      "Action: Menerapkan normalisasi basis data dan logika otorisasi pengguna yang ketat.",
+      "Result: Mencapai nilai sempurna dan arsitektur proyek dijadikan referensi mata kuliah."
+    ],
+    achievements: ["API Design", "SQL Normalization", "Auth Logic"],
     current: true,
   },
   {
@@ -42,9 +54,13 @@ const experiences = [
     company: "Freelance / Self-Driven",
     period: "2023 — 2025",
     type: "Independent Work",
-    description:
-      "Independently designing and developing scalable web systems, focusing on backend architecture, authentication flows, and database performance optimization across multiple personal and client-style projects.",
-    achievements: ["System architecture", "Auth systems", "Scalable backend"],
+    description: [
+      "Situation: Klien membutuhkan sistem pengelolaan informasi dinamis dengan anggaran efisien.",
+      "Task: Mengembangkan aplikasi web end-to-end yang cepat dan tanggap.",
+      "Action: Memanfaatkan Laravel dan Tailwind CSS, serta menerapkan caching menggunakan Redis.",
+      "Result: Meningkatkan kecepatan akses halaman hingga 45% dan menjaga loyalitas klien."
+    ],
+    achievements: ["Architecture", "Scalable DB", "Redis Cache"],
     current: false,
   },
 ];
@@ -198,7 +214,7 @@ const ExperienceSection = () => {
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-border/50 bg-muted/20">
                   <span className="w-2 h-2 rounded-full bg-rose-500/70" />
                   <span className="w-2 h-2 rounded-full bg-amber-400/70" />
-                  <span className="w-2 h-2 rounded-full bg-emerald-400/70" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400/60" />
                   <span className="ml-2 font-mono text-[11px] text-muted-foreground/50">
                     experience.json
                   </span>
@@ -238,12 +254,22 @@ const ExperienceSection = () => {
 
                   {/* Description */}
                   <div>
-                    <p className="text-[11px] font-mono text-primary/40 mb-2">
-                      // description
+                    <p className="text-[11px] font-mono text-primary/40 mb-3">
+                      // STAR method highlights
                     </p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {active.description}
-                    </p>
+                    <ul className="text-muted-foreground text-sm leading-relaxed space-y-2">
+                      {active.description.map((point, i) => {
+                        const [label, ...rest] = point.split(":");
+                        return (
+                          <li key={i} className="flex gap-2">
+                            <span className="font-mono text-xs text-primary/70 shrink-0 mt-0.5">
+                              {label}:
+                            </span>
+                            <span>{rest.join(":")}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </div>
 
                   {/* Achievements */}

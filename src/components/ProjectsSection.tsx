@@ -5,9 +5,9 @@ import { useRef, useState } from "react";
 
 const projects = [
   {
-    title: "Digital Signature System(FTI-Service)",
+    title: "Digital Signature System (FTI-Service)",
     description:
-      "A secure web-based digital signature platform built with Flask and Vue (TypeScript) featuring JWT authentication, document verification, and database-backed signature validation.",
+      "A secure web-based digital signature platform. Problem-Solution: Mengamankan validitas dokumen digital tanpa alur fisik. Impact: Mengurangi waktu pemrosesan tanda tangan hingga 85%.",
     tags: ["Flask", "Vue", "TypeScript", "PostgreSQL", "JWT"],
     github: "https://github.com/Christofer0/TTU-02-PROJECT",
     live: "#",
@@ -18,7 +18,7 @@ const projects = [
   {
     title: "Restaurant Website",
     description:
-      "A competition project: a responsive restaurant website with dynamic menu management, database integration, and optimized performance.",
+      "A responsive restaurant website with dynamic menu management. Problem-Solution: Mengotomatisasi reservasi dan manajemen stok real-time. Impact: Caching Redis mempercepat akses menu 40%.",
     tags: ["Laravel", "MySQL", "Blade", "Tailwind", "Redis"],
     github: "#",
     live: "https://next-gen-k-mentality.fly.dev/",
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Enterprise Digital Signature Platform",
     description:
-      "A production-grade digital signature system with multi-level approval workflow, secure JWT authentication, and role-based authorization built using Spring Boot and PostgreSQL.",
+      "A production-grade digital signature system with multi-level approval. Problem-Solution: Menghilangkan bottleneck persetujuan berkas korporat. Impact: Menangani 10k+ dokumen bulanan dengan aman.",
     tags: [
       "Spring Boot",
       "Java",
@@ -44,11 +44,10 @@ const projects = [
     year: "2025",
     lines: "15.2k",
   },
-
   {
     title: "Finance Dashboard",
     description:
-      "Interactive financial dashboard with data visualization, portfolio tracking, and predictive analytics.",
+      "Interactive financial dashboard with data visualization. Problem-Solution: Menyederhanakan analisis data finansial rumit. Impact: Membantu keputusan investasi 50% lebih cepat.",
     tags: ["TypeScript", "D3.js", "Python", "FastAPI"],
     github: "#",
     live: "#",
